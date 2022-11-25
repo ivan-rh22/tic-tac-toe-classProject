@@ -32,7 +32,8 @@ void scoreboard(){
 
 void gameBoard(){
     //print game board
-    system("clear");
+    //change this function so it also works on windows
+    //system("clear");
     cout << "       |       |       \n";
     cout << "   " << values[0] << "   |   " << values[1] << "   |   " << values[2] << "   \n";
     cout << "_______|_______|_______\n";
