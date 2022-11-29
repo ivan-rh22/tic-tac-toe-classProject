@@ -1,6 +1,3 @@
-#include <iostream>
-#include <vector>
-
 #include "Player.h"
 #include "gameBoard.cpp"
 #include "scoreBoard.cpp"
@@ -13,6 +10,7 @@ Player player2;
 char currPlayer;
 GameBoard board;
 ScoreBoard scores;
+string winner;
 
 
 
@@ -26,4 +24,6 @@ bool checkWin();
 bool checkDraw();
 void updateScores();
 bool newGame();
+void setWinner(char currPlayer);
+void getWinner();
 };
