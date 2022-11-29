@@ -11,7 +11,7 @@ void GameBoard::clearGame(){
 
 void GameBoard::printBoard(){
   //clear screen before printing game board
-  system("clear");
+  system("CLS");
   //prints gameboard
   cout << "       |       |       \n";
   cout << "   " << values[0] << "   |   " << values[1] << "   |   " << values[2] << "   \n";
