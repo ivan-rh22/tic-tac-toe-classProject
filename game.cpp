@@ -38,13 +38,13 @@ void Game::gameSetup(){
       break;
     }
     else{
-      system("clear");
+      system("CLS");
       cout << "Wrong input, try again" << endl;
       cout << player1.name << " what would you like to play as:\n" << "press 1 for 'x'\n" << "press 2 for 'o'" << endl;
       cin >> choice;
     }
   }
-  system("clear");
+  system("CLS");
   board.printBoard();
 }
 
@@ -165,7 +165,7 @@ bool Game::checkWin(){
     }
   }
   if(win == true){
-    system("clear");
+    system("CLS");
     updateScores();
     setWinner(currPlayer);
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
@@ -220,7 +220,7 @@ bool Game::newGame(){
     choice = true;
   else{
     choice = false;
-    system("clear");
+    system("CLS");
     cout << "\t\tGAME OVER" << endl;
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
   }
