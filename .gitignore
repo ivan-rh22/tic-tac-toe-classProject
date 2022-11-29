@@ -10,6 +10,7 @@
 **/.history
 **/.svn/
 **/main.dSYM
+*.exe
 
 # IntelliJ related
 **/*.iml
