@@ -2,8 +2,8 @@
 #include <vector>
 
 #include "Player.h"
-#include "gameBoard.h"
-#include "scoreBoard.h"
+#include "gameBoard.cpp"
+#include "scoreBoard.cpp"
 using namespace std;
 
 class Game{

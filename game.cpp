@@ -46,6 +46,7 @@ void Game::gameSetup(){
       cin >> choice;
     }
   }
+  system("clear");
   board.printBoard();
 }
 

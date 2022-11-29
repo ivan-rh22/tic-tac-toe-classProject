@@ -1,9 +1,8 @@
 #include <iostream>
 #include <vector>
 
-#include "game.h"
+#include "game.cpp"
 using namespace std;
-
 
 
 int main(){
