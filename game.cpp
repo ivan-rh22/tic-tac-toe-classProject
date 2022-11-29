@@ -1,5 +1,3 @@
-#include <iostream>
-#include <vector>
 #include <algorithm>
 #include <stdlib.h>
 //header files
@@ -169,6 +167,7 @@ bool Game::checkWin(){
   if(win == true){
     system("clear");
     updateScores();
+    setWinner(currPlayer);
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
     cout << currPlayer << " wins!" << endl;
   }
@@ -211,7 +210,6 @@ void Game::updateScores(){
   }
 }
 
-// GAMES class
 bool Game::newGame(){
   char newGameChoice;
   bool choice;
@@ -227,4 +225,23 @@ bool Game::newGame(){
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
   }
   return choice;
+}
+
+void Game::setWinner(char currPlayer){
+  if(currPlayer == 'X' && player1.playerToken == 'X'){
+    //set winner
+    winner = player1.name;
+  }
+  else if(currPlayer == 'O' && player1.playerToken == 'O'){
+    //set winner
+    winner = player1.name;
+  }
+  else{
+    //update score
+    winner = player2.name;
+  }
+}
+
+void Game::getWinner(){
+  cout << winner << endl;
 }
