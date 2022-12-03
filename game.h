@@ -11,6 +11,10 @@ char currPlayer;
 GameBoard board;
 ScoreBoard scores;
 string winner;
+char winnerToken;
+GameBoard winBoard;
+vector<int> winningSol;
+vector<Game> GamesPlayed;
 
 
 
@@ -25,5 +29,7 @@ bool checkDraw();
 void updateScores();
 bool newGame();
 void setWinner(char currPlayer);
-void getWinner();
+//void getWinner();
+void previousGames(); // have not defined this method
+void addCurrGame(Game currGame);
 };

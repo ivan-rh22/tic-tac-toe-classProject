@@ -20,6 +20,7 @@ void Game::gameSetup(){
   //clears vectors that store positions for each player before the game
   player1.playerMoves.clear();
   player2.playerMoves.clear();
+  winningSol.clear();
   //choose what they want to play as
   int choice;
   cout << player1.name << " what would you like to play as:\n" << "press 1 for 'x'\n" << "press 2 for 'o'" << endl;
@@ -38,13 +39,13 @@ void Game::gameSetup(){
       break;
     }
     else{
-      system("CLS");
+      system("clear");
       cout << "Wrong input, try again" << endl;
       cout << player1.name << " what would you like to play as:\n" << "press 1 for 'x'\n" << "press 2 for 'o'" << endl;
       cin >> choice;
     }
   }
-  system("CLS");
+  system("clear");
   board.printBoard();
 }
 
@@ -139,6 +140,9 @@ bool Game::checkWin(){
         if(count(moves.begin(), moves.end(), val1) && count(moves.begin(), moves.end(), val2) && count(moves.begin(), moves.end(), val3)){
           matchFound = true;
           win = true;
+          for(int j = 0; j < 3; j++){
+            winningSol.push_back(solutions[i][j]);
+          }
           break;
         }
         // if the set does not match we try with the next set only if the first vals match
@@ -165,7 +169,7 @@ bool Game::checkWin(){
     }
   }
   if(win == true){
-    system("CLS");
+    system("clear");
     updateScores();
     setWinner(currPlayer);
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
@@ -191,6 +195,7 @@ bool Game::checkDraw(){
   }
   if(draw == true){
     cout << "DRAW" << endl;
+    winner = "DRAW";
   }
   return draw;
 }
@@ -220,8 +225,8 @@ bool Game::newGame(){
     choice = true;
   else{
     choice = false;
-    system("CLS");
-    cout << "\t\tGAME OVER" << endl;
+    system("clear");
+    cout << "\tGAME OVER" << endl;
     scores.printScores(player1.score, player2.score, player1.name, player2.name);
   }
   return choice;
@@ -231,17 +236,55 @@ void Game::setWinner(char currPlayer){
   if(currPlayer == 'X' && player1.playerToken == 'X'){
     //set winner
     winner = player1.name;
+    winnerToken = player1.playerToken;
+    winBoard = board;
   }
   else if(currPlayer == 'O' && player1.playerToken == 'O'){
     //set winner
     winner = player1.name;
+    winnerToken = player1.playerToken;
+    winBoard = board;
   }
   else{
-    //update score
+    //set winner
     winner = player2.name;
+    winnerToken = player1.playerToken;
+    winBoard = board;
   }
 }
 
-void Game::getWinner(){
-  cout << winner << endl;
+void Game::previousGames(){
+  char input;
+  cout << "Would you like to see a previous game?\n(enter 'y' for yes or 'n' for no)" << endl;
+  cin >> input;
+  if(input == 'y'){
+    int userChoice;
+    system("clear");
+    cout << "You've played " << GamesPlayed.size() << " rounds" << endl;
+    for(int i = 0; i < GamesPlayed.size(); i++){
+      if(winner == "DRAW"){
+        cout << "Round " << i+1 << " game ended in: " << GamesPlayed.at(i).winner << endl;
+      }
+      else{
+        cout << "Round " << i+1 << " the winner was: " << GamesPlayed.at(i).winner << endl;
+      }
+    }
+    cout << "Enter the round number that you would like to look at:" << endl; cin >> userChoice;
+    GamesPlayed.at(userChoice-1).winBoard.printBoard();
+    cout << "'" << GamesPlayed.at(userChoice-1).winnerToken << "' won using the following spots:" << endl;
+
+    for(int i = 0; i < winningSol.size(); i++){
+      cout << GamesPlayed.at(userChoice-1).winningSol.at(i) << " ";
+    }
+    cout << endl;
+    previousGames();
+  }
+  else{
+    system("clear");
+    cout << "GOODBYE" << endl;
+  }
+}
+
+void Game::addCurrGame(Game currGame){
+  GamesPlayed.push_back(currGame);
 }

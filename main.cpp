@@ -6,8 +6,6 @@ using namespace std;
 
 
 int main(){
-  vector<Game> gamesPlayed;
-
   bool gameEnd = false;
   int numTurns = 0;
   
@@ -20,24 +18,26 @@ int main(){
     numTurns++;
     
     if(gameEnd == true){
+      currGame.addCurrGame(currGame);
       if(currGame.newGame() == false){
+        currGame.previousGames();
         break;
       }
       else{
         numTurns = 0;
         gameEnd = false;
-        gamesPlayed.push_back(currGame);
         currGame.gameSetup();
       }
     }
     //if game has ended in draw
     else if(numTurns == 9 && currGame.checkDraw() == true){
+      currGame.addCurrGame(currGame);
       if(currGame.newGame() == false){
+        currGame.previousGames();
         break;
       }
       else{
         numTurns = 0;
-        gamesPlayed.push_back(currGame);
         currGame.gameSetup();
       }
     }

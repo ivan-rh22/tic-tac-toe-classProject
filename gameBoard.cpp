@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "gameBoard.h"
 using namespace std;
 
@@ -11,7 +12,7 @@ void GameBoard::clearGame(){
 
 void GameBoard::printBoard(){
   //clear screen before printing game board
-  system("CLS");
+  system("clear");
   //prints gameboard
   cout << "       |       |       \n";
   cout << "   " << values[0] << "   |   " << values[1] << "   |   " << values[2] << "   \n";
